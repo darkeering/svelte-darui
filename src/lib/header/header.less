@@ -1,0 +1,24 @@
+* {
+	padding: 0;
+	margin: 0;
+	font-size: 14px;
+	font-weight: normal;
+}
+ul {
+	list-style: none;
+}
+.d-header {
+	display: flex;
+	justify-content: space-between;
+	.d-header-title {
+		display: flex;
+		cursor: pointer;
+	}
+	.d-header-subtitle {
+		display: flex;
+		& > li {
+			margin-left: 4px;
+			cursor: pointer;
+		}
+	}
+}

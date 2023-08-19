@@ -26,10 +26,17 @@
 			children: [
 				{
 					title: 'Tag'
-				},
+				}
 			]
 		},
-
+		{
+			title: 'Navigation',
+			children: [
+				{
+					title: 'Tabs'
+				}
+			]
+		}
 	];
 	function selectItem(item) {
 		goto('/components/' + item.title.toLowerCase());
@@ -53,9 +60,9 @@
 	.siderbar {
 		width: 200px;
 		height: calc(100vh - 72px);
-    padding-right: 20px;
-    border-right: 1.5px solid #ccc;
-    margin-right: 20px;
+		padding-right: 20px;
+		border-right: 1.5px solid #ccc;
+		margin-right: 20px;
 	}
 	.detail {
 		width: 500px;

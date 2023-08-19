@@ -1,15 +1,44 @@
 <script>
 	import { goto } from '$app/navigation';
 	import { DSiderBar } from '$lib/index.js';
+	const data = [
+		{
+			title: 'Basic',
+			children: [
+				{
+					title: 'Button'
+				}
+			]
+		},
+		{
+			title: 'Form',
+			children: [
+				{
+					title: 'Checkbox'
+				},
+				{
+					title: 'Input'
+				}
+			]
+		},
+		{
+			title: 'Data',
+			children: [
+				{
+					title: 'Tag'
+				},
+			]
+		},
+
+	];
 	function selectItem(item) {
-		console.log(item);
 		goto('/components/' + item.title.toLowerCase());
 	}
 </script>
 
 <div class="container">
 	<div class="siderbar">
-		<DSiderBar {selectItem} />
+		<DSiderBar {data} {selectItem} />
 	</div>
 
 	<div class="detail">
@@ -22,11 +51,13 @@
 		display: flex;
 	}
 	.siderbar {
-		/* display: inline-block; */
 		width: 200px;
+		height: calc(100vh - 72px);
+    padding-right: 20px;
+    border-right: 1.5px solid #ccc;
+    margin-right: 20px;
 	}
 	.detail {
-		/* display: inline-block; */
 		width: 500px;
 	}
 </style>

@@ -1,27 +1,43 @@
 <script>
-  import {DHeader} from '$lib/index.js'
-  const subtitleList = [
-    {
+	import { DHeader } from '$lib/index.js';
+	const subtitleList = [
+		{
 			title: 'Home',
 			navigate: '/home'
 		},
-		{
-			title: 'Guide',
-			navigate: '/guide'
-		},
+		// {
+		// 	title: 'Guide',
+		// 	navigate: '/guide'
+		// },
 		{
 			title: 'Components',
-			navigate: '/components'
+			navigate: '/components',
+			active: true
 		},
 		{
-			title: 'Light',
+			title: 'Light'
 		},
 		{
 			title: 'Github',
-			navigate: 'github.com/darkeering'
+			navigate: 'https://github.com/darkeering'
 		}
-  ]
+	];
 </script>
 
-<DHeader {subtitleList} />
-<slot />
+<div class="container">
+	<div class="header">
+		<DHeader {subtitleList} />
+	</div>
+	<div>
+		<slot />
+	</div>
+</div>
+
+<style>
+	.container {
+		padding: 0 20px;
+	}
+	.header {
+		margin: 20px 0;
+	}
+</style>

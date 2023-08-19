@@ -3,10 +3,12 @@
 	import { accordionData, activeItem } from './store.js';
 	import AccordionList from './accordion-list.svelte';
 	export let data = [];
+	export let selectItem;
 
 	activeItem.subscribe((item) => {
 		if (item) {
 			accordionData.set(setActiveItem($accordionData, item));
+			selectItem(item)
 		}
 	});
 

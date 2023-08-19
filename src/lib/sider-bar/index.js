@@ -1,3 +1,3 @@
-import SiderBar from "./sider-bar.svelte";
+import DSiderBar from "./sider-bar.svelte";
 
-export {SiderBar}
+export {DSiderBar}

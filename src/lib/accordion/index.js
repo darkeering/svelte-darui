@@ -1,3 +1,3 @@
-import Accordion from './accordion.svelte'
+import DAccordion from './accordion.svelte'
 
-export { Accordion }
+export { DAccordion }

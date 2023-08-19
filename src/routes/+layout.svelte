@@ -1,5 +1,5 @@
 <script>
-  import {Header} from '$lib/index.js'
+  import {DHeader} from '$lib/index.js'
   const subtitleList = [
     {
 			title: 'Home',
@@ -23,5 +23,5 @@
   ]
 </script>
 
-<Header {subtitleList} />
+<DHeader {subtitleList} />
 <slot />

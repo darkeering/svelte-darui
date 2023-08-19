@@ -1,5 +1,6 @@
 <script>
-	import { Accordion } from '$lib/index.js';
+	import { DAccordion } from '$lib/index.js';
+	export let selectItem;
 	const data = [
 		{
 			title: 'Basic',
@@ -23,4 +24,4 @@
 	];
 </script>
 
-<Accordion {data} />
+<DAccordion {data} {selectItem} />

@@ -1,3 +1,3 @@
-import Header from './header.svelte'
+import DHeader from './header.svelte'
 
-export {Header}
+export {DHeader}

@@ -4,7 +4,7 @@
 </script>
 
 <div>
-	<input type="checkbox" name="checkbox" id="checkbox" bind:checked />
+	<input type="checkbox" name="checkbox" bind:checked />
 	<label for="checkbox">{label}</label>
 </div>
 

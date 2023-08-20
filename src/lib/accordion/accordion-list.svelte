@@ -3,7 +3,7 @@
 	import AccordionItem from './accordion-item.svelte';
 	import AccordionList from './accordion-list.svelte';
 	export let items = [];
-	function fade(node, { delay = 0, duration = 250 }) {
+	function dropdown(node, { delay = 0, duration = 250 }) {
 		return { delay, duration, css: (t) => `opacity: ${t};height: ${node.clientHeight * t}px` };
 	}
 </script>
@@ -22,7 +22,7 @@
 					}}
 				/>
 				{#if !item.toggle}
-					<div transition:fade>
+					<div transition:dropdown>
 						<AccordionList items={item.children} />
 					</div>
 				{/if}

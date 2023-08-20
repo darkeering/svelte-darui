@@ -17,6 +17,9 @@
 				{
 					title: 'Status'
 				},
+				{
+					title: 'Dropdown'
+				},
 			]
 		},
 		{

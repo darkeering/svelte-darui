@@ -10,4 +10,5 @@ export * from './input/index.js';
 export * from './tag/index.js';
 export * from './tabs/index.js';
 export * from './status/index.js';
+export * from './dropdown-list/index.js';
 export * from './dropdown/index.js';

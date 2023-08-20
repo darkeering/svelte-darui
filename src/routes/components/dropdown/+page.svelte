@@ -1,16 +1,9 @@
 <script>
-	import { DDropdown, DButton } from '$lib/index.js';
-	let origin;
-	let show = false;
+	import { DDropdown, DemoExample } from '$lib/index.js';
 </script>
 
-<DButton
-	on:click={(e) => {
-		e.stopPropagation();
-		origin = e.target;
-		show = !show;
-	}}
-	>toggle
-</DButton>
-<br />
-<DDropdown bind:show {origin} />
+<DemoExample>
+	<DDropdown
+		items={[{ title: 'Angular' }, { title: 'React' }, { title: 'Vue' }, { title: 'Svelte' }]}
+	/>
+</DemoExample>

@@ -1,7 +1,9 @@
 <script>
-	import { goto } from '$app/navigation';
+	import { createEventDispatcher } from 'svelte';
 
 	export let subtitleList = [];
+
+	const dispatch = createEventDispatcher();
 	const onClick = (subtitle) => {
 		subtitleList = subtitleList.map((sub) => {
 			sub.active = false;
@@ -10,7 +12,7 @@
 			}
 			return sub;
 		});
-		if (subtitle.navigate) goto(subtitle.navigate);
+		dispatch('selectSubtitle', subtitle);
 	};
 </script>
 

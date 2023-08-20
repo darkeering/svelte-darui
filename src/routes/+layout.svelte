@@ -1,4 +1,5 @@
 <script>
+	import { goto } from '$app/navigation';
 	import { DHeader } from '$lib/index.js';
 	const subtitleList = [
 		{
@@ -11,7 +12,7 @@
 		// },
 		{
 			title: 'Components',
-			navigate: '/components',
+			navigate: '/components/button',
 			active: true
 		},
 		{
@@ -22,11 +23,14 @@
 			navigate: 'https://github.com/darkeering'
 		}
 	];
+	function selectSubtitle(e) {
+		goto(e.detail.navigate);
+	}
 </script>
 
 <div class="container">
 	<div class="header">
-		<DHeader {subtitleList} />
+		<DHeader {subtitleList} on:selectSubtitle={selectSubtitle} />
 	</div>
 	<div>
 		<slot />

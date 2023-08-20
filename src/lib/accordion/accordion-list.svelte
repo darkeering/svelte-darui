@@ -2,14 +2,14 @@
 	import AccordionMenu from './accordion-menu.svelte';
 	import AccordionItem from './accordion-item.svelte';
 	import AccordionList from './accordion-list.svelte';
-	export let data = [];
+	export let items = [];
 	function fade(node, { delay = 0, duration = 250 }) {
 		return { delay, duration, css: (t) => `opacity: ${t};height: ${node.clientHeight * t}px` };
 	}
 </script>
 
 <ul>
-	{#each data as item (item.title)}
+	{#each items as item (item.title)}
 		<li>
 			{#if !item.children || !item.children.length}
 				<AccordionItem {item} />
@@ -23,7 +23,7 @@
 				/>
 				{#if !item.toggle}
 					<div transition:fade>
-						<AccordionList data={item.children} />
+						<AccordionList items={item.children} />
 					</div>
 				{/if}
 			{/if}

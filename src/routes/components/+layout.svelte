@@ -1,7 +1,13 @@
 <script>
+	import { onMount } from 'svelte';
 	import { goto } from '$app/navigation';
 	import { DSiderBar } from '$lib/index.js';
-	const data = [
+	/** @type {import('./$types').LayoutData} */
+	export let data;
+	onMount(() => {
+		items = initItemActive(items)
+	});
+	let items = [
 		{
 			title: 'Basic',
 			children: [
@@ -38,14 +44,24 @@
 			]
 		}
 	];
-	function selectItem(item) {
-		goto('/components/' + item.title.toLowerCase());
+	function selectItem(e) {
+		goto('/components/' + e.detail.title.toLowerCase());
+	}
+	function initItemActive(items) {
+		items.forEach(item => {
+			item.avtive = false
+			if(item.title.toLowerCase() === data.id) {
+				item.active = true
+			}
+			if(item.children?.length) item = initItemActive(item.children)
+		})
+		return items
 	}
 </script>
 
 <div class="container">
 	<div class="siderbar">
-		<DSiderBar {data} {selectItem} />
+		<DSiderBar {items} on:selectItem={selectItem} />
 	</div>
 
 	<div class="detail">

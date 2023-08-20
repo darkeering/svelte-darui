@@ -1,7 +1,6 @@
 <script>
 	import { DAccordion } from '$lib/index.js';
-	export let selectItem;
-	export let data = [];
+	export let items = [];
 </script>
 
-<DAccordion {data} {selectItem} />
+<DAccordion {items} on:selectItem />

@@ -13,7 +13,10 @@
 			children: [
 				{
 					title: 'Button'
-				}
+				},
+				{
+					title: 'Status'
+				},
 			]
 		},
 		{

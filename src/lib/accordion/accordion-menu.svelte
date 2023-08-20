@@ -18,6 +18,7 @@
 		border-radius: 4px;
 		padding: 4px 8px;
 		transition: all 0.25s;
+		font-weight: 700;
 	}
 	p:hover {
 		background-color: #ccc;

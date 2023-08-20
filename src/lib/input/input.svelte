@@ -17,6 +17,6 @@
 	}
 	input:focus {
 		border-color: rgb(99, 102, 241);
-    box-shadow: 0px 0px 2px rgb(99, 102, 241, .6);
+    box-shadow: 0px 0px 4px rgb(99, 102, 241, .6);
 	}
 </style>

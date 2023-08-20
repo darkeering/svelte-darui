@@ -9,3 +9,4 @@ export * from './checkbox/index.js';
 export * from './input/index.js';
 export * from './tag/index.js';
 export * from './tabs/index.js';
+export * from './status/index.js';

@@ -6,10 +6,6 @@
 			title: 'Home',
 			navigate: '/home'
 		},
-		// {
-		// 	title: 'Guide',
-		// 	navigate: '/guide'
-		// },
 		{
 			title: 'Components',
 			navigate: '/components/button',

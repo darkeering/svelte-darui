@@ -1,5 +1,5 @@
 <script>
-	import { DInput, DemoExample } from '$lib/index.js';
+	import { DButton, DInput, DemoExample } from '$lib/index.js';
 	let value = '';
 </script>
 
@@ -14,5 +14,5 @@
 		{value}
 	/>
 	<p>input value: {value}</p>
-	<button on:click={() => (value += '1')}> value + 1</button>
+	<DButton on:click={() => (value += '1')}> value + 1</DButton>
 </DemoExample>

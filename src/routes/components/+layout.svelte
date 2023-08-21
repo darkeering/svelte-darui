@@ -20,6 +20,9 @@
 				{
 					title: 'Dropdown'
 				},
+				{
+					title: 'Icon'
+				},
 			]
 		},
 		{

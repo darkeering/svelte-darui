@@ -4,12 +4,12 @@
 	const subtitleList = [
 		{
 			title: 'Home',
-			navigate: '/home'
+			navigate: '/home',
+			active: true,
 		},
 		{
 			title: 'Components',
 			navigate: '/components/button',
-			active: true
 		},
 		{
 			title: 'Light'

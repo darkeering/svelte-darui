@@ -6,7 +6,9 @@
 
 <p style="padding-left: {item.level * 20 + 8}px;" on:click={() => toggle(item)}>
 	<span>{item.title}</span>
-	<i class:toggled="{item.toggle}">drop</i>
+	<i class:toggled={item.toggle}>
+		<i class="dar-icon icon-right" />
+	</i>
 </p>
 
 <style>
@@ -23,10 +25,11 @@
 	p:hover {
 		background-color: #ccc;
 	}
-  i {
-    transition: all 0.25s;
-  }
-  i.toggled {
-    transform: rotate(90deg);
-  }
+	i {
+		transition: all 0.25s;
+		transform: rotate(90deg);
+	}
+	i.toggled {
+		transform: rotate(0);
+	}
 </style>

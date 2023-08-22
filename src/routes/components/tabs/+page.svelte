@@ -18,6 +18,3 @@
 		]}
 	/>
 </DemoExample>
-
-<style>
-</style>

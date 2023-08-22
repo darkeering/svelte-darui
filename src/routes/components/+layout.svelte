@@ -1,11 +1,12 @@
 <script>
-	import { onMount } from 'svelte';
+	import { afterUpdate, onMount } from 'svelte';
 	import { goto } from '$app/navigation';
 	import { DSiderBar } from '$lib/index.js';
 	/** @type {import('./$types').LayoutData} */
 	export let data;
-	onMount(() => {
-		items = initItemActive(items)
+	onMount(() => {});
+	afterUpdate(() => {
+		items = initItemActive(items);
 	});
 	let items = [
 		{
@@ -22,7 +23,7 @@
 				},
 				{
 					title: 'Icon'
-				},
+				}
 			]
 		},
 		{
@@ -57,14 +58,15 @@
 		goto('/components/' + e.detail.title.toLowerCase());
 	}
 	function initItemActive(items) {
-		items.forEach(item => {
-			item.avtive = false
-			if(item.title.toLowerCase() === data.id) {
-				item.active = true
+		items.forEach((item) => {
+			if (item.title.toLowerCase() === data.id) {
+				item.active = true;
+			} else {
+				item.active = false;
 			}
-			if(item.children?.length) item = initItemActive(item.children)
-		})
-		return items
+			if (item.children?.length) item.children = initItemActive(item.children);
+		});
+		return items;
 	}
 </script>
 

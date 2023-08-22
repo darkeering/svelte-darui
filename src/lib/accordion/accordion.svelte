@@ -1,5 +1,5 @@
 <script>
-	import { createEventDispatcher, onMount } from 'svelte';
+	import { afterUpdate, createEventDispatcher, onMount } from 'svelte';
 	import { accordionData, activeItem } from './store.js';
 	import AccordionList from './accordion-list.svelte';
 	const dispatch = createEventDispatcher()
@@ -13,8 +13,12 @@
 	});
 
 	onMount(() => {
-		accordionData.set(initData(items, 0));
 	});
+	
+	afterUpdate(() => {
+		accordionData.set(initData(items, 0));
+
+	})
 
 	function initData(items, level) {
 		items.forEach((item) => {

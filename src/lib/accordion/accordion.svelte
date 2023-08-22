@@ -2,23 +2,19 @@
 	import { afterUpdate, createEventDispatcher, onMount } from 'svelte';
 	import { accordionData, activeItem } from './store.js';
 	import AccordionList from './accordion-list.svelte';
-	const dispatch = createEventDispatcher()
+	const dispatch = createEventDispatcher();
 	export let items = [];
 
 	activeItem.subscribe((item) => {
-		if (item) {
-			accordionData.set(setActiveItem($accordionData, item));
-			dispatch('selectItem', item)
-		}
+		accordionData.set(setActiveItem($accordionData, item));
+		dispatch('selectItem', item);
 	});
 
-	onMount(() => {
-	});
-	
+	onMount(() => {});
+
 	afterUpdate(() => {
 		accordionData.set(initData(items, 0));
-
-	})
+	});
 
 	function initData(items, level) {
 		items.forEach((item) => {
@@ -43,7 +39,7 @@
 				i.children = setActiveItem(i.children, item);
 			}
 		});
-    return items
+		return items;
 	}
 </script>
 

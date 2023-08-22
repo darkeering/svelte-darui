@@ -1,7 +1,19 @@
 <script>
 	import { goto } from '$app/navigation';
 	import { DHeader } from '$lib/index.js';
-	const subtitleList = [
+	import { afterUpdate } from 'svelte';
+	export let data;
+	afterUpdate(() => {
+		subtitleList = subtitleList.map(subtitle => {
+			if(subtitle.title.toLowerCase() === data.id) {
+				subtitle.active = true
+			} else {
+				subtitle.active = false
+			}
+			return subtitle
+		})
+	})
+	let subtitleList = [
 		{
 			title: 'Home',
 			navigate: '/home',

@@ -42,6 +42,9 @@
 			children: [
 				{
 					title: 'Tag'
+				},
+				{
+					title: 'Transfer'
 				}
 			]
 		},

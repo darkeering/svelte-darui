@@ -44,7 +44,7 @@
 					title: 'Tag'
 				},
 				{
-					title: 'Transfer'
+					title: 'Todos'
 				}
 			]
 		},

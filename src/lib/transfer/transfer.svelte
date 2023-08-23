@@ -2,7 +2,6 @@
 	import { crossfade } from 'svelte/transition';
 	import { quintOut } from 'svelte/easing';
 	import { flip } from 'svelte/animate';
-	import { afterUpdate } from 'svelte';
 
 	const [send, receive] = crossfade({
 		duration: 600,
@@ -20,81 +19,42 @@
 			};
 		}
 	});
-	export let todos = [
-		{
-			title: 'label1',
-			done: false
-		},
-		{
-			title: 'label2',
-			done: false
-		},
-		{
-			title: 'labe3',
-			done: false
-		},
-		{
-			title: 'label4',
-			done: false
-		},
-		{
-			title: 'label5',
-			done: false
-		},
-		{
-			title: 'label6',
-			done: false
-		},
-		{
-			title: 'label7',
-			done: false
-		},
-		{
-			title: 'label8',
-			done: true
-		}
-	];
-	let todoList = [];
-	let doneList = [];
-	afterUpdate(() => {
-		todoList = todos.filter((i) => !i.done);
-		doneList = todos.filter((i) => i.done);
-	});
+	export let todos = [];
 </script>
 
 <div class="container">
-	<div class="todo">
+	<div class="left">
 		<div class="field">
 			<span>Source</span>
 		</div>
 		<div class="content">
-			{#each todoList as todo (todo.title)}
+			{#each todos.filter((i) => !i.done) as item (item.title)}
 				<div
 					class="label"
-					in:receive={{ key: todo.title }}
-					out:send={{ key: todo.title }}
+					in:receive={{ key: item.title }}
+					out:send={{ key: item.title }}
 					animate:flip
 				>
-					<input type="checkbox" on:change={() => (todo.done = true)} />
-					<span>{todo.title}</span>
+					<input type="checkbox" bind:checked={item.done} />
+					<span>{item.title}</span>
 				</div>
 			{/each}
 		</div>
 	</div>
-	<div class="todo">
+	<div class="right">
 		<div class="field">
 			<span>Target</span>
 		</div>
 		<div class="content">
-			{#each doneList as done (done.title)}
+			{#each todos.filter((i) => i.done) as item (item.title)}
 				<div
 					class="label"
-					in:receive={{ key: done.title }}
-					out:send={{ key: done.title }}
+					in:receive={{ key: item.title }}
+					out:send={{ key: item.title }}
 					animate:flip
 				>
-					<input type="checkbox" checked on:change={() => (done.done = false)} />
-					<span>{done.title}</span>
+					<input type="checkbox" bind:checked={item.done} />
+					<span>{item.title}</span>
 				</div>
 			{/each}
 		</div>
@@ -105,7 +65,8 @@
 	.container {
 		display: inline-flex;
 	}
-	.todo {
+	.left,
+	.right {
 		display: inline-flex;
 		flex-direction: column;
 		border: 1px solid #ccc;

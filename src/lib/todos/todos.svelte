@@ -19,21 +19,7 @@
 			};
 		}
 	});
-	export let sourceList = [];
-	export let targetList = [];
-
-  function sourceToTarget() {
-    const sourceChecked = sourceList.filter(item => item.checked)
-    sourceList = sourceList.filter(item => !item.checked)
-    sourceChecked.forEach(item => item.checked = false)
-    targetList = [...sourceChecked, ...targetList]
-  }
-  function targetToSource() {
-    const targetChecked = targetList.filter(item => item.checked)
-    targetList = targetList.filter(item => !item.checked)
-    targetChecked.forEach(item => item.checked = false)
-    sourceList = [...targetChecked, ...sourceList]
-  }
+	export let todos = [];
 </script>
 
 <div class="container">
@@ -42,36 +28,32 @@
 			<span>Source</span>
 		</div>
 		<div class="content">
-			{#each sourceList as item (item.title)}
+			{#each todos.filter((i) => !i.done) as item (item.title)}
 				<div
 					class="label"
 					in:receive={{ key: item.title }}
 					out:send={{ key: item.title }}
 					animate:flip
 				>
-					<input type="checkbox" bind:checked={item.checked} />
+					<input type="checkbox" bind:checked={item.done} />
 					<span>{item.title}</span>
 				</div>
 			{/each}
 		</div>
-	</div>
-	<div class="transfer">
-		<i class="dar-icon icon-right" on:click={() => sourceToTarget()} />
-		<i class="dar-icon icon-left" on:click={() => targetToSource()} />
 	</div>
 	<div class="right">
 		<div class="field">
 			<span>Target</span>
 		</div>
 		<div class="content">
-			{#each targetList as item (item.title)}
+			{#each todos.filter((i) => i.done) as item (item.title)}
 				<div
 					class="label"
 					in:receive={{ key: item.title }}
 					out:send={{ key: item.title }}
 					animate:flip
 				>
-					<input type="checkbox" bind:checked={item.checked} />
+					<input type="checkbox" bind:checked={item.done} />
 					<span>{item.title}</span>
 				</div>
 			{/each}
@@ -90,22 +72,7 @@
 		border: 1px solid #ccc;
 		border-radius: 4px;
 		min-width: 200px;
-	}
-	.transfer {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-	}
-	.transfer i {
-		border-radius: 100%;
-		padding: 6px;
-    color: #fff;
-		background-color: rgb(37, 99, 235, 0.8);
-    margin: 5px 8px;
-    cursor: pointer;
-	}
-	.transfer i:hover {
-		background-color: rgb(37, 99, 235);
+		margin-right: 20px;
 	}
 	.label {
 		border-radius: 4px;

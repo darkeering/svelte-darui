@@ -1,5 +1,5 @@
 <script>
-	import { DTodos } from '$lib/index.js';
+	import { DTodos, DemoExample } from '$lib/index.js';
 	let todos = [
 		{
 			title: 'label1',
@@ -36,4 +36,6 @@
 	];
 </script>
 
-<DTodos {todos} />
+<DemoExample>
+	<DTodos {todos} />
+</DemoExample>

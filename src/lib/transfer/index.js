@@ -1,3 +1,3 @@
-import DTodos from './transfer.svelte';
+import DTransfer from './transfer.svelte';
 
-export { DTodos };
+export { DTransfer };

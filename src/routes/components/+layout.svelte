@@ -45,6 +45,9 @@
 				},
 				{
 					title: 'Todos'
+				},
+				{
+					title: 'Transfer'
 				}
 			]
 		},

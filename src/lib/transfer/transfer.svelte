@@ -111,7 +111,11 @@
 		border-radius: 4px;
 		margin-bottom: 4px;
 		padding: 6px 0;
+    display: flex;
 	}
+  .label input {
+    margin-right: 6px;
+  }
 	.field {
 		padding: 8px;
 		background-color: #eee;

@@ -1,5 +1,5 @@
 <script>
-	import { DTransfer } from '$lib/index.js';
+	import { DTransfer, DemoExample } from '$lib/index.js';
 	let sourceList = [
     {
       title: 'option1'
@@ -36,4 +36,6 @@
   ];
 </script>
 
-<DTransfer {sourceList} {targetList} />
+<DemoExample>
+  <DTransfer {sourceList} {targetList} />
+</DemoExample>

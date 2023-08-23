@@ -2,6 +2,7 @@
 	import { crossfade } from 'svelte/transition';
 	import { quintOut } from 'svelte/easing';
 	import { flip } from 'svelte/animate';
+	import { afterUpdate } from 'svelte';
 
 	const [send, receive] = crossfade({
 		duration: 600,
@@ -12,7 +13,7 @@
 			return {
 				duration: 600,
 				easing: quintOut,
-				css: t => `
+				css: (t) => `
 					transform: ${transform} scale(${t});
 					opacity: ${t}
 				`
@@ -29,59 +30,74 @@
 			done: false
 		},
 		{
-			title: 'label3',
+			title: 'labe3',
+			done: false
+		},
+		{
+			title: 'label4',
+			done: false
+		},
+		{
+			title: 'label5',
+			done: false
+		},
+		{
+			title: 'label6',
+			done: false
+		},
+		{
+			title: 'label7',
+			done: false
+		},
+		{
+			title: 'label8',
 			done: true
 		}
 	];
-	function mark(todo, done) {
-		todo.done = done;
-		todos = todos.filter((t) => t.title !== todo.title);
-		todos = [...todos, todo];
-	}
+	let todoList = [];
+	let doneList = [];
+	afterUpdate(() => {
+		todoList = todos.filter((i) => !i.done);
+		doneList = todos.filter((i) => i.done);
+	});
 </script>
 
 <div class="container">
 	<div class="todo">
-		<h2>todo</h2>
-		{#each todos.filter((todo) => !todo.done) as todo (todo.title)}
-			<div
-				class="label"
-				in:receive={{ key: todo.title }}
-				out:send={{ key: todo.title }}
-				animate:flip
-			>
-				<input
-					type="checkbox"
-					on:change={(e) => {
-						e.stopPropagation();
-						e.stopImmediatePropagation();
-						mark(todo, true);
-					}}
-				/>
-				<span>{todo.title}</span>
-				<i class="dar-icon icon-delete" />
-			</div>
-		{/each}
+		<div class="field">
+			<span>Source</span>
+		</div>
+		<div class="content">
+			{#each todoList as todo (todo.title)}
+				<div
+					class="label"
+					in:receive={{ key: todo.title }}
+					out:send={{ key: todo.title }}
+					animate:flip
+				>
+					<input type="checkbox" on:change={() => (todo.done = true)} />
+					<span>{todo.title}</span>
+				</div>
+			{/each}
+		</div>
 	</div>
 	<div class="todo">
-		<h2>done</h2>
-		{#each todos.filter((todo) => todo.done) as todo (todo.title)}
-			<div
-				class="label"
-				in:receive={{ key: todo.title }}
-				out:send={{ key: todo.title }}
-				animate:flip
-			>
-				<input type="checkbox" checked on:change={() => mark(todo, false)} />
-				<span>{todo.title}</span>
-				<i
-					class="dar-icon icon-delete"
-					on:click={() => {
-						todos = todos.filter((t) => t.title !== todo.title);
-					}}
-				/>
+		<div class="field">
+			<span>Target</span>
+		</div>
+		<div class="content">
+			{#each doneList as done (done.title)}
+				<div
+					class="label"
+					in:receive={{ key: done.title }}
+					out:send={{ key: done.title }}
+					animate:flip
+				>
+					<input type="checkbox" checked on:change={() => (done.done = false)} />
+					<span>{done.title}</span>
 				</div>
-		{/each}
+			{/each}
+		</div>
 	</div>
 </div>
 
@@ -92,29 +108,28 @@
 	.todo {
 		display: inline-flex;
 		flex-direction: column;
-		margin-right: 20px;
-		/* border: 1px solid #ccc; */
-		border-radius: 4px;
-		padding: 20px 10px;
-	}
-	.label {
-		background-color: #eee;
 		border: 1px solid #ccc;
 		border-radius: 4px;
+		min-width: 200px;
+		margin-right: 20px;
+	}
+	.label {
+		border-radius: 4px;
 		margin-bottom: 4px;
-		padding: 4px 6px;
-		position: relative;
+		padding: 6px 0;
 	}
-	h2 {
-		padding: 0;
-		margin: 0;
+	.field {
+		padding: 8px;
+		background-color: #eee;
 	}
-
-	i {
-		border: 1px solid #333;
-		border-radius: 100%;
-		padding: 2px;
-		cursor: pointer;
+	.content {
+		display: flex;
+		flex-direction: column;
+		max-height: 200px;
+		overflow-y: overlay;
+		overflow-x: hidden;
+		padding: 8px;
+		box-sizing: border-box;
+		height: 100%;
 	}
-
 </style>

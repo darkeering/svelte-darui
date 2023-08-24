@@ -4,7 +4,7 @@ export function myPlugin() {
 		enforce: 'pre',
 		transform(code, id, ss) {
 			if (id.indexOf('node_modules') > -1) return code;
-			const test = /<DemoExample>(.*)<\/DemoExample>/gmis;
+			const test = /<DemoExample>(.*?)<\/DemoExample>/gmis;
 			let newCode = code;
 			if (test.test(newCode)) {
         newCode = newCode.replace(/\t/gmis, "  ");

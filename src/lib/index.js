@@ -14,3 +14,4 @@ export * from './dropdown-list/index.js';
 export * from './dropdown/index.js';
 export * from './todos/index.js';
 export * from './transfer/index.js';
+export * from './dialog/index.js';

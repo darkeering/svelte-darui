@@ -58,6 +58,14 @@
 					title: 'Tabs'
 				}
 			]
+		},
+		{
+			title: 'Notification',
+			children: [
+				{
+					title: 'Dialog'
+				}
+			]
 		}
 	];
 	function selectItem(e) {
@@ -98,6 +106,6 @@
 		margin-right: 20px;
 	}
 	.detail {
-		width: 500px;
+		min-width: 500px;
 	}
 </style>

@@ -43,7 +43,7 @@
 		</div>
 		<div class="content">
 			{#each sourceList as item (item.title)}
-				<div
+				<label
 					class="label"
 					in:receive={{ key: item.title }}
 					out:send={{ key: item.title }}
@@ -51,7 +51,7 @@
 				>
 					<input type="checkbox" bind:checked={item.checked} />
 					<span>{item.title}</span>
-				</div>
+				</label>
 			{/each}
 		</div>
 	</div>
@@ -65,7 +65,7 @@
 		</div>
 		<div class="content">
 			{#each targetList as item (item.title)}
-				<div
+				<label
 					class="label"
 					in:receive={{ key: item.title }}
 					out:send={{ key: item.title }}
@@ -73,7 +73,7 @@
 				>
 					<input type="checkbox" bind:checked={item.checked} />
 					<span>{item.title}</span>
-				</div>
+				</label>
 			{/each}
 		</div>
 	</div>

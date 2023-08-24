@@ -75,8 +75,8 @@
 		display: flex;
 	}
 	code {
-		background-color: #111;
-		/* padding: 20px; */
+		background-color: rgba(0, 0, 0, .9);
+		padding: 0 20px;
 		box-sizing: border-box;
 		color: #fff;
 		font-size: 14px;
